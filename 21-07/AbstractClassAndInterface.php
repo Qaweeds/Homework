@@ -50,7 +50,6 @@ class Nissan implements Car, Speed
 }
 
 /*
- *
  * Пример абстрактного класса
  * */
 
