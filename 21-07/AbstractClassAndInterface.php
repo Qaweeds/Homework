@@ -25,13 +25,10 @@ interface Speed
     public function scale();
 }
 
-class Nissan implements Car, Speed
+abstract class Nissan implements Car, Speed
 {
 
-    public function speed()
-    {
-        // TODO: Implement speed() method.
-    }
+
 
     public function color()
     {
