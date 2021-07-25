@@ -32,7 +32,6 @@ class User
     }
 }
 
-
 $user = new User();
 
 $user->id = 12;
