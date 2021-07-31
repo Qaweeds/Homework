@@ -1,8 +1,6 @@
 <?php
 
 
-use JetBrains\PhpStorm\ArrayShape;
-
 class User
 {
     private $name;
@@ -14,7 +12,7 @@ class User
         if (method_exists($this, $name)) {
             $this->$name(implode(',', $arguments));
         } else {
-            die('Такого метода не существует.');
+            die('Такого метода не существует');
         }
     }
 
