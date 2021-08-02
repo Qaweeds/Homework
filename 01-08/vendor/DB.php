@@ -14,7 +14,7 @@ class DB
             );
 
             $pdo = new PDO(
-                'mysql:host=' . $config['HOST'] . ';dbname=' . $config['DATABASE'] . ';charset=utf8',
+                'mysql:host=' . $config['HOST'] .':'. $config['PORT']. ';dbname=' . $config['DATABASE'] . ';charset=utf8',
                 $config['user'],
                 $config['pass'],
                 $opt
