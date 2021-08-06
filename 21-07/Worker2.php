@@ -33,6 +33,6 @@ class Worker2
     }
 }
 
-$worker = new Worker2('Jack', 11, 1000);
+$worker = new Worker2('Jack', 25, 1000);
 
 echo $worker->getAge() * $worker->getSalary();
