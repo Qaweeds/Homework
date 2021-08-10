@@ -24,3 +24,7 @@ class Payment
         return $this->payment->getCurrency();
     }
 }
+
+$btn = new BitcoinPayment(0.3);
+$payment = new Payment($btn);
+echo $payment->getPaymentAmount() . ' ' . $payment->getPaymentCurrency();
