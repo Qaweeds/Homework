@@ -21,6 +21,7 @@ class Contact implements IContactBuilder
     public function phone($value): IContactBuilder
     {
         $this->contact->phone = $value;
+
         return $this;
     }
 
