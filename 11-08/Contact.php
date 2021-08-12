@@ -9,7 +9,6 @@ class Contact implements IContactBuilder
     public function __construct()
     {
         $this->reset();
-
     }
 
     public function reset(): IContactBuilder
