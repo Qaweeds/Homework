@@ -10,7 +10,6 @@ $newContact = $contact->phone('000-555-000')
     ->address("Some address")
     ->build();
 
-
 $contactDirector = new ContactDirector($contact);
 
 $testContact = $contactDirector->testContact();
