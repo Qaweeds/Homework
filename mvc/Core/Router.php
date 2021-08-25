@@ -22,7 +22,7 @@ class Router
             $controller = $this->getNamespace() . $this->convertToStudlyCaps($controller);
 
             if (class_exists($controller)) {
-                $controller_obj = new $controller();
+                $controller_obj = new $controller($this->params);
 
                 $action = $this->params['action'];
                 $action = $this->convertToCamelCase($action);
@@ -30,10 +30,9 @@ class Router
                 if (!preg_match("/action$/i", $action) && method_exists($controller_obj, $action)) {
                     unset($this->params['controller']);
                     unset($this->params['action']);
+                    if (isset($this->params['namespace'])) unset($this->params['namespace']);
 
-                    $params = implode(',', $this->params);
-
-                    call_user_func([$controller_obj, $action], $params);
+                    call_user_func_array([$controller_obj, $action], $this->params);
                 } else {
                     throw new Exception("Method '$action' not found in $controller");
                 }

@@ -1,0 +1,1 @@
+<header style="width: 100%; height: 100px; background: lightcyan"><h1>Это Header</h1></header>

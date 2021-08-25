@@ -7,5 +7,9 @@
     },
     "require-dev": {
         "larapack/dd": "^1.1"
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.3",
+      "ext-pdo": "*"
     }
 }

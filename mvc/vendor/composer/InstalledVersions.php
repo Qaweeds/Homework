@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '054baf0e5c984213891d504f62992a1f8fe09bfc',
+    'reference' => '1bee013cc8bf347f20bc5beee470da0a52923d47',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,16 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '054baf0e5c984213891d504f62992a1f8fe09bfc',
+      'reference' => '1bee013cc8bf347f20bc5beee470da0a52923d47',
+    ),
+    'graham-campbell/result-type' => 
+    array (
+      'pretty_version' => 'v1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '7e279d2cd5d7fbb156ce46daada972355cea27bb',
     ),
     'larapack/dd' => 
     array (
@@ -52,6 +61,24 @@ private static $installed = array (
       array (
       ),
       'reference' => '561b5111a13d0094b59b5c81b1572489485fb948',
+    ),
+    'phpoption/phpoption' => 
+    array (
+      'pretty_version' => '1.7.5',
+      'version' => '1.7.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '994ecccd8f3283ecf5ac33254543eb0ac946d525',
+    ),
+    'symfony/polyfill-ctype' => 
+    array (
+      'pretty_version' => 'v1.23.0',
+      'version' => '1.23.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '46cd95797e9df938fdd2b03693b5fca5e64b01ce',
     ),
     'symfony/polyfill-mbstring' => 
     array (
@@ -79,6 +106,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '3dd8ddd1e260e58ecc61bb78da3b6584b3bfcba0',
+    ),
+    'vlucas/phpdotenv' => 
+    array (
+      'pretty_version' => 'v5.3.0',
+      'version' => '5.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'b3eac5c7ac896e52deab4a99068e3f4ab12d9e56',
     ),
   ),
 );

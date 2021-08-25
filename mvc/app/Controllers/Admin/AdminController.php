@@ -4,12 +4,13 @@
 namespace App\Controllers\Admin;
 
 
-use App\Controllers\Controller;
+
+use Core\Controller;
 
 class AdminController extends Controller
 {
-    public function admin()
+    public function admin($id)
     {
-        dd(__CLASS__, __METHOD__);
+        dd(__CLASS__, __METHOD__, $id);
     }
 }
