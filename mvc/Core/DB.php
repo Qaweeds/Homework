@@ -20,4 +20,8 @@ trait DB
         return $db;
     }
 
+    public function escape($string)
+    {
+        return htmlspecialchars(trim(strip_tags($string)));
+    }
 }

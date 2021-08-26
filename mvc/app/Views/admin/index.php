@@ -5,6 +5,8 @@
         <tr>
             <th>Id</th>
             <th>Title</th>
+            <th>Редактировать</th>
+            <th>Удалить</th>
         </tr>
         </thead>
         <tbody>
@@ -14,6 +16,8 @@
                 echo '<tr>';
                 echo '<td>' . $post->id . '</td>';
                 echo '<td><a href="/article/' . $post->id . '">' . $post->title . '</a></td>';
+                echo '<td><a href="/admin/posts/' . $post->id . '/edit">Редактировать</a></td>';
+                echo '<td><a href="/admin/posts/' . $post->id . '/delete">Удалить</a></td>';
                 echo '</tr>';
             }
         }

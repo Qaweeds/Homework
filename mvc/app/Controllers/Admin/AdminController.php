@@ -4,13 +4,16 @@
 namespace App\Controllers\Admin;
 
 
-
 use Core\Controller;
 
 class AdminController extends Controller
 {
-    public function admin($id)
+    protected $errorMessage = 'Вы не являетесь администратором.';
+
+    public function before()
     {
-        dd(__CLASS__, __METHOD__, $id);
+        session_start();
+        if (isset($_SESSION['user']) && $_SESSION['user']->role === 'Админ') return true;
+        return false;
     }
 }

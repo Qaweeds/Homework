@@ -1,1 +1,3 @@
-<footer style="position:fixed; bottom: 0; width: 100%; height: 100px; background: lightgray"><h1>Это Footer</h1></footer>
+</body>
+<footer><h1>Это Footer</h1></footer>
+</html>

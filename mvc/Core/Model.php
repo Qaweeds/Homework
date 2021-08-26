@@ -10,7 +10,6 @@ class Model
 {
     use DB;
 
-
     protected static $table = null;
     protected $fillable = [];
 
@@ -31,9 +30,7 @@ class Model
             $stmt = static::db()->prepare($query);
             $stmt->bindValue(':id', $id);
             $stmt->execute();
-
             return $stmt->fetchObject(static::class);
-
 
         } else {
             throw new \Exception('table is not defined');
@@ -51,9 +48,76 @@ class Model
         } else {
             throw new \Exception('fillable exception');
         }
+
     }
 
-    protected function check_fillable()
+    public function create($data)
+    {
+        if (gettype($data) === 'array' && isset($data['id'])) unset($data['id']);
+
+        $vars = $this->prepared_obj_vars($data);
+        if (!is_null(static::$table)) {
+            $query = 'INSERT INTO ' . static::$table . '(';
+            foreach ($vars as $k => $v) {
+                $query .= $k . ', ';
+            }
+            $query = substr($query, 0, -2);
+            $query .= ') VALUES(';
+
+            foreach ($vars as $k => $v) {
+                $query .= ':' . $k . ', ';
+            }
+            $query = substr($query, 0, -2);
+            $query .= ')';
+            $stmt = static::db()->prepare($query);
+
+            foreach ($vars as $k => $v) {
+                $stmt->bindValue($k, $this->escape($v));
+            }
+            return $stmt->execute();
+        } else {
+            throw new \Exception('table is not defined');
+        }
+
+    }
+
+    public function update($data)
+    {
+        if (empty($this->id)) throw  new \Exception('Cannot update empty object');
+        $vars = $this->prepared_obj_vars($data);
+
+        if (!is_null(static::$table)) {
+            $query = 'UPDATE ' . static::$table . ' SET ';
+
+            foreach ($vars as $k => $v) {
+                $query .= $k . ' = :' . $k . ', ';
+            }
+            $query = substr($query, 0, -2);
+            $query .= ' WHERE id = ' . $this->id;
+            $stmt = static::db()->prepare($query);
+
+            foreach ($vars as $k => $v) {
+                $stmt->bindValue($k, $this->escape($v));
+            }
+            return $stmt->execute();
+        } else {
+            throw new \Exception('table is not defined');
+        }
+
+    }
+
+    public function delete()
+    {
+        if (!is_null(static::$table)) {
+            $stmt = static::db()->prepare('DELETE FROM ' . static::$table . ' WHERE id = :id');
+            $stmt->bindValue('id', $this->escape($this->id));
+            return $stmt->execute();
+        } else {
+            throw new \Exception('table is not defined');
+        }
+    }
+
+    private function check_fillable()
     {
         $vars = $this->prepared_obj_vars($this);
         foreach ($vars as $k => $v) {
@@ -64,38 +128,13 @@ class Model
         return true;
     }
 
-    protected function create($data)
-    {
-        $vars = $this->prepared_obj_vars($data);
-        if (count($vars)) throw new \Exception('Object already have properties. Cannot create, only save');
-        dd(__METHOD__, $vars);
-    }
-
-    protected function update($data)
-    {
-        $vars = $this->prepared_obj_vars($data);
-
-        $query = 'UPDATE ' . static::$table . ' SET ';
-
-        foreach ($vars as $k => $v) {
-            $query .= $k . ' = :' . $k . ', ';
-        }
-        $query = substr($query, 0, -2);
-        $query .= ' WHERE id = ' . $this->id;
-
-        $stmt = static::db()->prepare($query);
-        foreach ($vars as $k => $v) {
-            $stmt->bindValue($k, $v);
-        }
-        $stmt->execute();
-        dd(__METHOD__, $this);
-    }
-
-
     private function prepared_obj_vars($data)
     {
-        $vars = get_object_vars($data);
-        if (isset($vars['fillable'])) unset($vars['fillable']);
-        return $vars;
+        if ($data instanceof Model) {
+            $data = get_object_vars($data);
+            if (isset($data['fillable'])) unset($data['fillable']);
+        }
+        if (isset($data['id'])) unset($data['id']);
+        return $data;
     }
 }
