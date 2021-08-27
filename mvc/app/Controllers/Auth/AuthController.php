@@ -17,8 +17,9 @@ class AuthController extends Controller
             session_start();
             $_SESSION['user'] = $user;
             if ($user->role === 'Админ') {
-                setcookie('role', 'q');
+                setcookie('role', 'q'); //просто для отображения ссылкок в меню
             }
+            // Здесь нет никакой сверхлогики. просто что-бы содержимое куки не был ослишком очевидным)
             setcookie('token', password_hash('token', PASSWORD_BCRYPT));
         } else {
             throw new \Exception('User not found');

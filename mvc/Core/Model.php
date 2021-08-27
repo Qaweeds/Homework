@@ -17,7 +17,9 @@ class Model
     {
         if (!is_null(static::$table)) {
             $query = "SELECT * FROM " . static::$table;
+
             return static::db()->query($query)->fetchAll(PDO::FETCH_CLASS, static::class);
+
         } else {
             throw new \Exception('table is not defined');
         }
@@ -30,6 +32,7 @@ class Model
             $stmt = static::db()->prepare($query);
             $stmt->bindValue(':id', $id);
             $stmt->execute();
+
             return $stmt->fetchObject(static::class);
 
         } else {
@@ -56,6 +59,7 @@ class Model
         if (gettype($data) === 'array' && isset($data['id'])) unset($data['id']);
 
         $vars = $this->prepared_obj_vars($data);
+
         if (!is_null(static::$table)) {
             $query = 'INSERT INTO ' . static::$table . '(';
             foreach ($vars as $k => $v) {
@@ -74,7 +78,9 @@ class Model
             foreach ($vars as $k => $v) {
                 $stmt->bindValue($k, $this->escape($v));
             }
+
             return $stmt->execute();
+
         } else {
             throw new \Exception('table is not defined');
         }
@@ -135,6 +141,7 @@ class Model
             if (isset($data['fillable'])) unset($data['fillable']);
         }
         if (isset($data['id'])) unset($data['id']);
+
         return $data;
     }
 }

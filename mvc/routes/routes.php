@@ -17,8 +17,6 @@ $router->add('/admin/posts/create', ['controller' => 'PostController', 'action' 
 $router->add('/admin/posts/{id}/edit', ['controller' => 'PostController', 'action' => 'edit', 'namespace' => 'Admin']);
 $router->add('/admin/posts/store', ['controller' => 'PostController', 'action' => 'store', 'namespace' => 'Admin']);
 $router->add('/admin/posts/{id}/delete', ['controller' => 'PostController', 'action' => 'delete', 'namespace' => 'Admin']);
-//$router->add('/admin/posts/{id}/edit', ['controller' => 'AdminController', 'action' => 'admin', 'namespace' => 'Admin']);
-//$router->add('/admin/posts/{id}/remove', ['controller' => 'AdminController', 'action' => 'admin', 'namespace' => 'Admin']);
 
 try {
     $router->dispatch($_SERVER['REQUEST_URI']);

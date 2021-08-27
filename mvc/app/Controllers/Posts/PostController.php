@@ -26,7 +26,7 @@ class PostController extends Controller
 
     public function before()
     {
-        // Здесь нет никаких сверхпроверок. просто что-бы содержимое куки не был ослишком очевидным)
+        // Здесь нет никакой сверхлогики. просто что-бы содержимое куки не был ослишком очевидным)
         if (empty($_COOKIE['token']) || password_verify('token', $_COOKIE['token']) === false) {
             return false;
         }
