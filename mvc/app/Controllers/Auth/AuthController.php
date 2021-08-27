@@ -20,6 +20,8 @@ class AuthController extends Controller
                 setcookie('role', 'q');
             }
             setcookie('token', password_hash('token', PASSWORD_BCRYPT));
+        } else {
+            throw new \Exception('User not found');
         }
 
         header('Location:/');
