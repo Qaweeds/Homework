@@ -105,7 +105,9 @@ class Model
             foreach ($vars as $k => $v) {
                 $stmt->bindValue($k, $this->escape($v));
             }
+
             return $stmt->execute();
+
         } else {
             throw new \Exception('table is not defined');
         }
