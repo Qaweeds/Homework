@@ -71,8 +71,6 @@ ALTER TABLE `posts`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `email_2` (`email`),
-  ADD UNIQUE KEY `email_3` (`email`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
