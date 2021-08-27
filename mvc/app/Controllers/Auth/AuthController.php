@@ -33,7 +33,7 @@ class AuthController extends Controller
         $user = new User();
         $user->create($_POST);
 
-        header('Location:/');
+        header('Location:/login');
     }
 
     protected function logout()
