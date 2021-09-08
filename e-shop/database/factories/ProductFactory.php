@@ -22,10 +22,7 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
-        $category = Category::query()->inRandomOrder()->first();
-
         return [
-            'category_id' => $category->id,
             'title' => $this->faker->unique->text(30),
             'description' => $this->faker->sentence(100),
             'short_description' => $this->faker->text(150),
@@ -35,6 +32,5 @@ class ProductFactory extends Factory
             'in_stock' => (rand(0, 100) < 100) ? rand(1, 1000) : 0,
             'thumbnail' => '111'
         ];
-
     }
 }

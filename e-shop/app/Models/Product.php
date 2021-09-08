@@ -28,10 +28,10 @@ class Product extends Model
 
     public function orders()
     {
-        $this->belongsToMany(Order::class);
+        return $this->belongsToMany(Order::class);
     }
 
-    public function galery()
+    public function gallery()
     {
         return $this->hasMany(ProductImage::class);
     }
