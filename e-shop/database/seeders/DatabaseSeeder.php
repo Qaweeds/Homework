@@ -29,6 +29,6 @@ class DatabaseSeeder extends Seeder
             });
         });
 
-        Order::factory(100)->create(); // pivot внутри фабрики реализован
+        Order::factory(100)->create();
     }
 }
