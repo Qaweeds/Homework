@@ -13,11 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    dd(storage_path());
-});
 
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::resource('products', 'ProductController');
 Route::resource('categories', 'CategoryController');
