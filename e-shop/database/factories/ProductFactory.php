@@ -23,14 +23,14 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->unique->text(30),
+            'title' => $this->faker->unique->text(15),
             'description' => $this->faker->sentence(100),
-            'short_description' => $this->faker->text(150),
-            'SKU' => $this->faker->text(35),
+            'short_description' => $this->faker->text(100),
+            'SKU' => $this->faker->randomNumber(8),
             'price' => $this->faker->randomFloat(null, 1, 10000),
             'discount' => (rand(1, 6) < 4) ? rand(1, 5) * 10 : null,
             'in_stock' => (rand(0, 100) < 100) ? rand(1, 1000) : 0,
-            'thumbnail' => '111'
+            'thumbnail' => $this->faker->imageUrl(400, 400),
         ];
     }
 }
