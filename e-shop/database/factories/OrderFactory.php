@@ -26,7 +26,7 @@ class OrderFactory extends Factory
     {
         return $this->afterMaking(function (Order $order) {
 
-        })->afterCreating(function(Order $order) {
+        })->afterCreating(function (Order $order) {
             $this->addToPivot($order);
         });
     }
@@ -53,16 +53,23 @@ class OrderFactory extends Factory
     private function addToPivot(Order $order)
     {
         $rand = rand(1, 7);
-
+        $sum = 0;
         for ($i = 1; $i <= $rand; $i++) {
             $product = Product::query()->inRandomOrder()->first();
+            $quantity = rand(1, 10);
+
             $order->products()->newPivot([
                 'order_id' => $order->id,
                 'product_id' => $product->id,
-                'quantity' => rand(1,10),
+                'quantity' => $quantity,
                 'single_price' => $product->price
             ])->save();
+
+            $sum += ($product->price * $quantity);
         }
+
+        $order->update(['total' => $sum]);
+        $sum = 0;
     }
 
 }
